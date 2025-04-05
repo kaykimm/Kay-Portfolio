@@ -1,0 +1,125 @@
+<!-- hello! Welcome to my website -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kay kim</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+ <!-- footer -->
+<footer class="site-footer">
+    <div class="footer-left">
+    <button id="modeToggle">lights on</button>
+    </div>
+  </footer>
+  
+<!-- header -->
+<header class="site-header">  
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="index.html" class="name">KAY KIM</a>
+      </div>
+  
+      <div class="header-middle-wrapper">
+        <div class="header-middle">
+          <p>She is a graphic designer based in Providence, RI</p>
+          <p>
+            Currently @ 
+            <a href="https://www.risdguild.com/" target="_blank">Design Guild</a>, 
+            <a href="https://www.theindy.org/" target="_blank">The Indy</a>
+          </p>
+          <p>Previously @ GIL Design Studio</p>
+        </div>
+      </div>
+  
+      <div class="header-right">
+        <a href="about.html" class="dot-link">about</a>
+        <a href="archive.html" class="dot-link">archive</a>
+        <a href="illustration.html" class="dot-link">illustration</a>
+      </div>
+    </div>
+  </header>
+      
+  <!-- here are my works! -->
+  <main class="project-grid">
+    <a href="project1.html" class="thumb" data-title="Palmistry Existentialism" data-desc="publication" data-year="2024">
+      <img src="images/palmistry.jpg" alt="Project 1">
+    </a>
+  
+    <a href="project2.html" class="thumb" data-title="Knoll Research Library" data-desc="Branding" data-year="2025">
+        <img src="images/knoll final.png " alt="Project 2">
+      </a>      
+  
+    <a href="project3.html" class="thumb" data-title="Distant Planet of Yesterday" data-desc="Visualization" data-year="2024">
+      <img src="images/어제의 행성.jpg" alt="Project 3">
+    </a>
+  
+    <a href="project4.html" class="thumb" data-title="What is Love?" data-desc="publication" data-year="2023">
+      <img src="images/love-book.gif" alt="Project 4">
+    </a>
+  
+    <a href="project5.html" class="thumb" data-title="Fix me, fix me!" data-desc="publication" data-year="2025">
+      <img src="images/18522_m.jpg" alt="Project 5">
+    </a>
+  
+    <a href="project6.html" class="thumb" data-title="The Indy" data-desc="publication, Editorial" data-year="2023 - on going">
+      <img src="images/indy.jpg" alt="Project 6">
+    </a>
+
+    <a href="project6.html" class="thumb" data-title="The Indy" data-desc="publication, Editorial" data-year="2023 - on going">
+        <img src="images/indy.jpg" alt="Project 6">
+      </a>
+      
+  </main>
+  
+
+  
+ <!-- java goes here -->
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById('modeToggle');
+  
+      toggleBtn.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+  
+        // 버튼 텍스트 업데이트
+        if (document.body.classList.contains('dark-mode')) {
+          toggleBtn.textContent = 'lights on';
+        } else {
+          toggleBtn.textContent = 'lights off';
+        }
+      });
+    });
+  </script>
+  
+  <script>
+    const thumbs = document.querySelectorAll('.thumb');
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('tooltip');
+    document.body.appendChild(tooltip);
+  
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('mouseenter', e => {
+        const title = thumb.getAttribute('data-title');
+        const desc = thumb.getAttribute('data-desc');
+        const year = thumb.getAttribute('data-year');
+        tooltip.innerHTML = `<strong>${title}</strong><br><span>${desc}</span><br><span>${year}</span>`;
+        tooltip.style.display = 'block';
+      });
+  
+      thumb.addEventListener('mousemove', e => {
+        tooltip.style.left = (e.pageX + 20) + 'px';  
+        tooltip.style.top = (e.pageY - 20) + 'px';  
+
+      });
+  
+      thumb.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+    });
+  </script>
+  
