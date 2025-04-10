@@ -30,19 +30,21 @@ body {
     z-index: 1000;
   }
   
-  .header-inner {
-    width: 100%;
-    max-width: 1000px;
-    padding: 2rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8rem;
-  
-    margin-left: 0rem;  
-    margin-right: auto;
-    text-align: left;
-  }
+.header-inner {
+  width: 100%;
+  max-width: 1000px;
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8rem;
+  margin-left: 0rem;  
+  margin-right: auto;
+  text-align: left;
+
+  position: relative; /* ✅ 이 줄 추가! */
+}
+
   
   
   /* header - left */
@@ -50,6 +52,8 @@ body {
     display: flex;
     align-items: center;
     height: 100%;
+    margin-right: 10px;
+
   }
   
   /* header - middle */
@@ -60,6 +64,7 @@ body {
     font-size: 12px;
     line-height: 1.4;
     color: #333;
+    margin-right: 80px;
   }
   
   .header-middle p {
@@ -76,14 +81,18 @@ body {
   }
 
   
+
+  
   /* project grid */
   .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
-    padding: 1rem 2rem;  
-    margin-bottom: 3rem; 
+    padding: 2rem;
+    margin: 0;
+    padding-bottom: 75px; /* 또는 gap만큼 여유 있게 */
   }
+  
   
   .thumb img {
     width: 100%;
@@ -105,15 +114,6 @@ a {
   a:hover {
     font-style: italic;
     text-decoration: underline;
-  }
-  
-   /* project! */
-   .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px; 
-    padding: 2rem;
-    margin: 0; 
   }
   
   .thumb {
@@ -185,6 +185,13 @@ a {
   .site-footer button:hover {
     opacity: 0.7;
   }
+
+  .footer-right {
+    font-size: 12px;
+    color: #111;
+    padding-right: 3.3rem; 
+  }
+  
   
   /* === Dark Mode === */
 body.dark-mode .site-header {
@@ -251,6 +258,10 @@ body.dark-mode {
   body.dark-mode .thumb:hover .overlay {
     color: #fff;
   }
+
+  body.dark-mode .footer-right {
+    color: #fff;
+  }
   
 /* tooltip */
 .tooltip {
@@ -300,5 +311,69 @@ body.dark-mode {
   
   body.dark-mode .tooltip span {
     color: #ccc;
+  }
+
+  /* 메인에서는 흐려지고 */
+body:not(.archive-page) .thumb:hover img {
+    opacity: 0.3;
+  }
+  
+  /* archive 페이지에서는 흐려지지 않게 */
+  body.archive-page .thumb:hover img {
+    opacity: 1;
+  }
+  
+  .illustration-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr; /* 왼쪽 좁고 오른쪽 넓음 */
+    gap: 20px;
+    padding: 2rem;
+    padding-bottom: 220px;
+    align-items: start;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .column img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+    object-fit: cover;
+  }
+  
+  .header-inner {
+    position: relative; /* 기준 요소로 설정 */
+  }
+  
+  .header-clock {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  
+  .clock {
+    width: 60px;
+    height: 60px;
+    border: 1px solid #111;
+    border-radius: 50%;
+    position: relative;
+  }
+  
+  .hand {
+    width: 50%;
+    height: 2px;
+    background: #111;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: 0% 50%;
+    transform: rotate(90deg);
+    transition: all 0.05s ease-in-out;
   }
   

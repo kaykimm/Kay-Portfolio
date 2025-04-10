@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Archive | Kay Kim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body class="archive-page">
+
+  <!-- Header -->
+  <body>
+    <div id="header-placeholder"></div>
+  
+    <script>
+      fetch('/header.html')
+        .then(res => res.text())
+        .then(data => {
+          document.getElementById('header-placeholder').innerHTML = data;
+        });
+    </script>
+  </body>  <!-- <div class="site-header">
+    <div class="header-inner">
+      <div class="header-left">
+        <a href="/index.html" class="name">KAY KIM</a>
+      </div>
+      <div class="header-middle-wrapper">
+        <div class="header-middle">
+          <p>She is a graphic designer based in Providence, RI</p>
+          <p>
+            Currently @ 
+            <a href="https://www.risdguild.com/" target="_blank">Design Guild</a>, 
+            <a href="https://www.theindy.org/" target="_blank">The Indy</a>
+          </p>
+          <p>Previously @ GIL Design Studio</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="/about.html" class="dot-link">about</a>
+        <a href="/archive/index.html" class="dot-link">archive</a>
+        <a href="/illustration/illustration.html" class="dot-link">illustration</a>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Grid -->
+  <main class="project-grid">
+    <div class="thumb" data-title="RISD Posters" data-desc="Print, 2023">
+      <img src="../images/poster.jpg" alt="poster">
+    </div>
+    <div class="thumb" data-title="Mockup Study" data-desc="Editorial, 2024">
+      <img src="../images/mockup.jpg" alt="mockup">
+    </div>
+    <!-- 원하는 만큼 썸네일 계속 추가 -->
+  </main>
+
+  <!-- Tooltip -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const thumbs = document.querySelectorAll('.thumb');
+      const tooltip = document.createElement('div');
+      tooltip.classList.add('tooltip');
+      document.body.appendChild(tooltip);
+
+      thumbs.forEach(thumb => {
+        thumb.addEventListener('mouseenter', () => {
+          const title = thumb.getAttribute('data-title');
+          const desc = thumb.getAttribute('data-desc');
+          tooltip.innerHTML = `<strong>${title}</strong><br><span>${desc}</span>`;
+          tooltip.style.display = 'block';
+        });
+
+        thumb.addEventListener('mousemove', e => {
+          tooltip.style.left = (e.clientX + 20) + 'px';
+          tooltip.style.top = (e.clientY - 20) + 'px';
+        });
+
+        thumb.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+        });
+      });
+    });
+  </script>
+
+<!-- footer -->
+<footer class="site-footer">
+    <div class="footer-left">
+      <button id="modeToggle">lights on</button>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleBtn = document.getElementById('modeToggle');
+  
+      toggleBtn.addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+  
+        if (document.body.classList.contains('dark-mode')) {
+          toggleBtn.textContent = 'lights on';
+        } else {
+          toggleBtn.textContent = 'lights off';
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
